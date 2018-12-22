@@ -4,18 +4,16 @@
 #
 Name     : commonmark
 Version  : 0.8.1
-Release  : 1
+Release  : 2
 URL      : https://files.pythonhosted.org/packages/21/ba/5133e424a9112aa76cf09ce82cbc2af712691f4a80abd123b6de3aa47f07/commonmark-0.8.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/21/ba/5133e424a9112aa76cf09ce82cbc2af712691f4a80abd123b6de3aa47f07/commonmark-0.8.1.tar.gz
 Summary  : Python parser for the CommonMark Markdown spec
 Group    : Development/Tools
 License  : BSD-3-Clause
-Requires: commonmark-bin
-Requires: commonmark-python3
-Requires: commonmark-license
-Requires: commonmark-python
-Requires: flake8
-Requires: hypothesis
+Requires: commonmark-bin = %{version}-%{release}
+Requires: commonmark-license = %{version}-%{release}
+Requires: commonmark-python = %{version}-%{release}
+Requires: commonmark-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 
 %description
@@ -24,7 +22,7 @@ BuildRequires : buildreq-distutils3
 %package bin
 Summary: bin components for the commonmark package.
 Group: Binaries
-Requires: commonmark-license
+Requires: commonmark-license = %{version}-%{release}
 
 %description bin
 bin components for the commonmark package.
@@ -41,7 +39,7 @@ license components for the commonmark package.
 %package python
 Summary: python components for the commonmark package.
 Group: Default
-Requires: commonmark-python3
+Requires: commonmark-python3 = %{version}-%{release}
 
 %description python
 python components for the commonmark package.
@@ -64,14 +62,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536660143
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1545492993
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/commonmark
-cp LICENSE %{buildroot}/usr/share/doc/commonmark/LICENSE
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/commonmark
+cp LICENSE %{buildroot}/usr/share/package-licenses/commonmark/LICENSE
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -84,8 +83,8 @@ echo ----[ mark ]----
 /usr/bin/cmark
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/commonmark/LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/commonmark/LICENSE
 
 %files python
 %defattr(-,root,root,-)
