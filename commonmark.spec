@@ -4,7 +4,7 @@
 #
 Name     : commonmark
 Version  : 0.8.1
-Release  : 2
+Release  : 3
 URL      : https://files.pythonhosted.org/packages/21/ba/5133e424a9112aa76cf09ce82cbc2af712691f4a80abd123b6de3aa47f07/commonmark-0.8.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/21/ba/5133e424a9112aa76cf09ce82cbc2af712691f4a80abd123b6de3aa47f07/commonmark-0.8.1.tar.gz
 Summary  : Python parser for the CommonMark Markdown spec
