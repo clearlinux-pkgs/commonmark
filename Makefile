@@ -1,5 +1,5 @@
 PKG_NAME := commonmark
-URL = https://files.pythonhosted.org/packages/21/ba/5133e424a9112aa76cf09ce82cbc2af712691f4a80abd123b6de3aa47f07/commonmark-0.8.1.tar.gz
+URL = https://files.pythonhosted.org/packages/ac/9d/a9ff7efaf06fb2b6fcc7a035760ba0971250832e37f0c554c335d86c160b/commonmark-0.9.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
