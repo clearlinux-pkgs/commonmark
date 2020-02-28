@@ -4,7 +4,7 @@
 #
 Name     : commonmark
 Version  : 0.9.1
-Release  : 10
+Release  : 11
 URL      : https://files.pythonhosted.org/packages/60/48/a60f593447e8f0894ebb7f6e6c1f25dafc5e89c5879fdc9360ae93ff83f0/commonmark-0.9.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/60/48/a60f593447e8f0894ebb7f6e6c1f25dafc5e89c5879fdc9360ae93ff83f0/commonmark-0.9.1.tar.gz
 Summary  : Python parser for the CommonMark Markdown spec
@@ -57,6 +57,7 @@ python components for the commonmark package.
 Summary: python3 components for the commonmark package.
 Group: Default
 Requires: python3-core
+Provides: pypi(commonmark)
 
 %description python3
 python3 components for the commonmark package.
@@ -64,13 +65,14 @@ python3 components for the commonmark package.
 
 %prep
 %setup -q -n commonmark-0.9.1
+cd %{_builddir}/commonmark-0.9.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570379089
+export SOURCE_DATE_EPOCH=1582912011
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -87,7 +89,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/commonmark
-cp LICENSE %{buildroot}/usr/share/package-licenses/commonmark/LICENSE
+cp %{_builddir}/commonmark-0.9.1/LICENSE %{buildroot}/usr/share/package-licenses/commonmark/7df36cd9b2fdbd800a7fa19b3faad20561a7e917
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -102,7 +104,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/commonmark/LICENSE
+/usr/share/package-licenses/commonmark/7df36cd9b2fdbd800a7fa19b3faad20561a7e917
 
 %files python
 %defattr(-,root,root,-)
