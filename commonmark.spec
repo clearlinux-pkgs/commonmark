@@ -4,7 +4,7 @@
 #
 Name     : commonmark
 Version  : 0.9.1
-Release  : 13
+Release  : 14
 URL      : https://files.pythonhosted.org/packages/60/48/a60f593447e8f0894ebb7f6e6c1f25dafc5e89c5879fdc9360ae93ff83f0/commonmark-0.9.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/60/48/a60f593447e8f0894ebb7f6e6c1f25dafc5e89c5879fdc9360ae93ff83f0/commonmark-0.9.1.tar.gz
 Summary  : Python parser for the CommonMark Markdown spec
@@ -17,15 +17,7 @@ Requires: commonmark-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 
 %description
-commonmark.py
 =============
-commonmark.py is a pure Python port of `jgm <https://github.com/jgm>`__'s
-`commonmark.js <https://github.com/jgm/commonmark.js>`__, a
-Markdown parser and renderer for the
-`CommonMark <http://commonmark.org>`__ specification, using only native
-modules. Once both this project and the CommonMark specification are
-stable we will release the first ``1.0`` version and attempt to keep up
-to date with changes in ``commonmark.js``.
 
 %package bin
 Summary: bin components for the commonmark package.
@@ -72,15 +64,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582912011
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1603388606
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
